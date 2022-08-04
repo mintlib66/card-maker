@@ -1,0 +1,41 @@
+@import './common.scss';
+
+header {
+  position: relative;
+  background-color: $makerGreen;
+  color: white;
+  text-align: center;
+
+  .headerTitle {
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+  }
+  .userInfo {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    color: white;
+    font-weight: 800;
+  }
+  .userName {
+    margin-right: 1rem;
+  }
+  .logoutBtn {
+    padding: 0.5rem 1rem;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+  }
+  .logoutBtn:hover {
+    background-color: white;
+    color: $makerGreen;
+  }
+}
+
+footer {
+  background-color: $makerGreen;
+  color: white;
+  text-align: center;
+}

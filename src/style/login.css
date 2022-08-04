@@ -133,8 +133,33 @@ table {
   border-spacing: 0;
 }
 
-body {
-  margin: 0;
-  background-color: #ffeae8;
+.login .content {
+  text-align: center;
+  background: white;
+  padding: 2rem;
 }
-/*# sourceMappingURL=index.css.map */
+
+.login .content h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.login .content li {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.login .content button {
+  padding: 0.5rem;
+  width: 10rem;
+  border: 1px solid #385461;
+  border-radius: 0.5rem;
+  color: #385461;
+  background: white;
+}
+
+.login .content button:hover {
+  color: white;
+  background: #385461;
+}
+/*# sourceMappingURL=login.css.map */

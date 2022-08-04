@@ -1,0 +1,30 @@
+@import './common.scss';
+
+.login {
+  .content {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+    li {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    button {
+      padding: 0.5rem;
+      width: 10rem;
+      border: 1px solid $makerGreen;
+      border-radius: 0.5rem;
+      color: $makerGreen;
+      background: $makerWhite;
+    }
+    button:hover {
+      color: $makerWhite;
+      background: $makerGreen;
+    }
+  }
+}
