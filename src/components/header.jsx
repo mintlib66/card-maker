@@ -3,7 +3,7 @@ import '../style/header.css'
 
 function Header(props) {
   return (
-    <header>
+    <header className="header">
       <h1 className="headerTitle">Business Card Maker</h1>
       <div className="userInfo">
         <span className="userName">{props.userName ? props.userName : ''}</span>

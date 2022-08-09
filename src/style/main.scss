@@ -1,0 +1,106 @@
+@import './common.scss';
+
+.main {
+  max-width: 100rem;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: $makerWhite;
+
+  .content {
+    flex: 1;
+    display: flex;
+
+    h2 {
+      color: $makerGreen;
+      font-weight: 800;
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 2rem 1rem;
+    }
+
+    .editor {
+      flex-basis: 50%;
+      border-right: 1px solid $makerLightGrey;
+      height: 100%;
+
+      .itemList {
+        margin: 1rem;
+
+        .item {
+          display: grid;
+          grid-template-areas:
+            'input input select'
+            'input input'
+            'input'
+            'input button';
+        }
+        input {
+          grid-area: 'input';
+        }
+        select {
+          grid-area: 'select';
+        }
+        button {
+          grid-area: 'button';
+        }
+      }
+    }
+    .preview {
+      flex-basis: 50%;
+      height: 100%;
+
+      .cardList {
+        margin: 1rem;
+        display: flex;
+        justify-content: center;
+        .card {
+          width: 30rem;
+          padding: 2rem;
+          border-radius: 1rem;
+          display: grid;
+          grid-template-columns: 8rem auto;
+
+          background-color: $makerBlack;
+          color: $makerWhite;
+
+          .name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+          }
+          .company::after {
+            content: '.';
+            display: block;
+            height: 1px;
+            width: 100%;
+            margin: 0.5rem 0;
+            background-color: $makerWhite;
+          }
+          p {
+            margin: 0.5rem 0;
+          }
+        }
+        .card.colorful {
+          background-color: $makerColorful;
+        }
+        .card.light {
+          background-color: $makerWheat;
+          color: $makerBlack;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $mediaQuery) {
+    .content {
+      flex-direction: column;
+
+      .editor {
+        border-right: none;
+        border-bottom: 1px solid $makerLightGrey;
+      }
+    }
+  }
+}

@@ -133,47 +133,49 @@ table {
   border-spacing: 0;
 }
 
-header {
+.header {
   position: relative;
   background-color: #385461;
   color: white;
   text-align: center;
 }
 
-header .headerTitle {
+.header .headerTitle {
   margin: 0;
   padding: 1rem;
   font-size: 1.75rem;
   font-weight: 800;
 }
 
-header .userInfo {
+.header .userInfo {
   position: absolute;
   top: 0.75rem;
-  right: 0.5rem;
+  right: 0.75rem;
   color: white;
   font-weight: 800;
 }
 
-header .userName {
+.header .userName {
   margin-right: 1rem;
 }
 
-header .logoutBtn {
+.header .logoutBtn {
   padding: 0.5rem 1rem;
   color: white;
   border: 1px solid white;
   background-color: transparent;
 }
 
-header .logoutBtn:hover {
+.header .logoutBtn:hover {
   background-color: white;
   color: #385461;
 }
 
-footer {
+.footer {
+  display: block;
   background-color: #385461;
   color: white;
   text-align: center;
+  padding: 0.5rem;
 }
 /*# sourceMappingURL=header.css.map */

@@ -6,16 +6,10 @@ import Main from './components/main'
 function App({ authService }) {
   // 페이지: /login, /main
   return (
-    <div>
-      {/* <h1>Business Card Maker</h1> */}
-      <Routes>
-        <Route path="/" element={<Login authService={authService} />}></Route>
-        <Route
-          path="/main"
-          element={<Main authService={authService} />}
-        ></Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login authService={authService} />}></Route>
+      <Route path="/main" element={<Main authService={authService} />}></Route>
+    </Routes>
   )
 }
 

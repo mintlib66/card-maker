@@ -3,6 +3,9 @@ import React, { useEffect } from 'react'
 import Header from './header'
 import Footer from './footer'
 import { useNavigate } from 'react-router-dom'
+import Editor from './editor'
+import Preview from './preview'
+import '../style/main.css'
 
 function Main({ authService }) {
   const navigate = useNavigate()
@@ -19,7 +22,7 @@ function Main({ authService }) {
   })
 
   return (
-    <section className="maker">
+    <section className="main">
       <Header
         userName={
           authService.getUserInfo()
@@ -29,9 +32,8 @@ function Main({ authService }) {
         onLogout={onLogout}
       />
       <div className="content">
-        <h2>카드 만들기</h2>
-        {/* <Maker></Maker>
-        <Preview></Preview> */}
+        <Editor></Editor>
+        <Preview></Preview>
       </div>
       <Footer />
     </section>
