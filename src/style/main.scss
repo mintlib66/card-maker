@@ -25,25 +25,13 @@
       border-right: 1px solid $makerLightGrey;
       height: 100%;
 
-      .itemList {
+      .cardFormList {
         margin: 1rem;
 
-        .item {
+        .cardForm {
           display: grid;
-          grid-template-areas:
-            'input input select'
-            'input input'
-            'input'
-            'input button';
-        }
-        input {
-          grid-area: 'input';
-        }
-        select {
-          grid-area: 'select';
-        }
-        button {
-          grid-area: 'button';
+          grid-template-columns: repeat(3, 2fr);
+          margin-bottom: 1rem;
         }
       }
     }
@@ -54,17 +42,28 @@
       .cardList {
         margin: 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+
         .card {
-          width: 30rem;
-          padding: 2rem;
+          display: flex;
+          width: 90%;
+          max-width: 30rem;
+          margin-bottom: 1rem;
           border-radius: 1rem;
-          display: grid;
-          grid-template-columns: 8rem auto;
+          padding: 2rem;
+          box-shadow: 6px 6px 8px 0px $makerShadow;
 
-          background-color: $makerBlack;
-          color: $makerWhite;
-
+          .avatar {
+            width: 10rem;
+            height: 10rem;
+            margin-right: 1rem;
+            border-radius: 50%;
+          }
+          .infoBox {
+            flex-grow: 1;
+          }
           .name {
             font-size: 1.25rem;
             font-weight: 800;
@@ -82,12 +81,23 @@
             margin: 0.5rem 0;
           }
         }
-        .card.colorful {
-          background-color: $makerColorful;
+        .card.dark {
+          background-color: $makerBlack;
+          color: $makerWhite;
         }
         .card.light {
-          background-color: $makerWheat;
+          background-color: $makerWhite;
           color: $makerBlack;
+          .company::after {
+            background-color: $makerBlack;
+          }
+        }
+        .card.colorful {
+          background: $makerColorful;
+          color: $makerBlack;
+          .company::after {
+            background-color: $makerBlack;
+          }
         }
       }
     }

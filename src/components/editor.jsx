@@ -1,27 +1,14 @@
 import React from 'react'
+import CardEditForm from './cardEditForm'
 
-function Editor(props) {
+function Editor({ cards }) {
   return (
     <div className="editor">
       <h2>카드 편집</h2>
-      <ul className="itemList">
-        <li className="item">
-          <input type="text" name="name" placeholder="이름" />
-          <input type="text" name="company" placeholder="회사" />
-          <select name="theme">
-            <option value="">다크</option>
-            <option value="">컬러풀</option>
-            <option value="">라이트</option>
-          </select>
-
-          <input type="text" name="job" placeholder="직군" />
-          <input type="email" name="email" placeholder="이메일" />
-
-          <input type="text" name="msg" placeholder="메시지" />
-
-          <input type="file" name="img" />
-          <button className="delete">삭제</button>
-        </li>
+      <ul className="cardFormList">
+        {cards.map(card => {
+          return <CardEditForm card={card} key={card.id} />
+        })}
       </ul>
     </div>
   )

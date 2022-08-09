@@ -133,14 +133,6 @@ table {
   border-spacing: 0;
 }
 
-section {
-  position: relative;
-  max-width: 100rem;
-  height: 100vh;
-  margin: 0 auto;
-  background-color: white;
-}
-
 .login .content {
   text-align: center;
   background: white;
