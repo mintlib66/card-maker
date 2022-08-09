@@ -1,25 +1,60 @@
 import React from 'react'
+import Button from './button'
+import ImageFileInput from './imageFileInput'
 
 function CardEditForm({ card }) {
+  const { name, company, theme, title, email, message, fileName, fileURL } =
+    card
+  const DEFAULT_IMAGE = 'images/default_logo.png'
+  const url = fileURL || DEFAULT_IMAGE
+
+  const onSubmit = () => {}
+
   return (
-    <li className="cardForm">
-      <p className="id">{card.id}</p>
-      <input type="text" name="name" placeholder="이름" />
-      <input type="text" name="company" placeholder="회사" />
-      <select name="theme">
-        <option value="">다크</option>
-        <option value="">컬러풀</option>
-        <option value="">라이트</option>
+    <form className="cardForm">
+      <input
+        className="input"
+        type="text"
+        name="name"
+        placeholder="이름"
+        value={name}
+      />
+      <input
+        className="input"
+        type="text"
+        name="company"
+        placeholder="회사"
+        value={company}
+      />
+      <select className="select" name="theme" value={theme}>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+        <option value="colorful">Colorful</option>
       </select>
-
-      <input type="text" name="job" placeholder="직군" />
-      <input type="email" name="email" placeholder="이메일" />
-
-      <input type="text" name="msg" placeholder="메시지" />
-
-      <input type="file" name="img" />
-      <button className="delete">삭제</button>
-    </li>
+      <input
+        className="input"
+        type="text"
+        name="title"
+        placeholder="직군"
+        value={title}
+      />
+      <input
+        className="input"
+        type="email"
+        placeholder="이메일"
+        value={email}
+      />
+      <textarea
+        className="textarea"
+        name="message"
+        placeholder="메시지"
+        value={message}
+      />
+      <div className="fileInput">
+        <ImageFileInput />
+      </div>
+      <Button name="삭제" onClick={onSubmit} />
+    </form>
   )
 }
 

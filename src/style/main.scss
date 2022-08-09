@@ -24,23 +24,48 @@
       flex-basis: 50%;
       border-right: 1px solid $makerLightGrey;
       height: 100%;
+      padding: 1rem;
 
       .cardFormList {
-        margin: 1rem;
-
         .cardForm {
-          display: grid;
-          grid-template-columns: repeat(3, 2fr);
+          display: flex;
+          width: 100%;
+          flex-wrap: wrap;
           margin-bottom: 1rem;
+          background: $makerWhite;
+          border-right: 1px solid $makerBlack;
+          border-bottom: 1px solid $makerBlack;
+
+          .input,
+          .select,
+          .textarea,
+          .fileInput {
+            font-size: 0.8rem;
+            padding: 0.5em;
+            border: 0;
+            border-top: 1px solid $makerBlack;
+            border-left: 1px solid $makerBlack;
+          }
+          .input,
+          .select {
+            flex: 1 1 30%;
+          }
+          .textarea {
+            flex-basis: 100%;
+          }
+          .fileInput,
+          .button {
+            flex: 1 1 50%;
+          }
         }
       }
     }
     .preview {
       flex-basis: 50%;
       height: 100%;
+      padding: 1rem;
 
       .cardList {
-        margin: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;

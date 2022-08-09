@@ -1,0 +1,15 @@
+@import './common.scss';
+
+.button {
+  background-color: $makerGreen;
+  color: $makerWhite;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex: 1 1 50%;
+  font-size: 0.8rem;
+  border: none;
+}
+.button:hover {
+  opacity: 0.8;
+}
