@@ -6,11 +6,11 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  background-color: $makerWhite;
 
   .content {
     flex: 1;
     display: flex;
+    background-color: $makerWhite;
 
     h2 {
       color: $makerGreen;

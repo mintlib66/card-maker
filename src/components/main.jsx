@@ -10,7 +10,7 @@ import '../style/main.css'
 function Main({ authService }) {
   const [cards, setCards] = useState([
     {
-      id: '1',
+      id: 1,
       company: 'bt company',
       name: 'Amy',
       theme: 'dark',
@@ -21,7 +21,7 @@ function Main({ authService }) {
       fileURL: 'amy.png',
     },
     {
-      id: '2',
+      id: 2,
       company: 'bt company',
       name: 'Larkin',
       theme: 'light',
@@ -32,7 +32,7 @@ function Main({ authService }) {
       fileURL: null,
     },
     {
-      id: '3',
+      id: 3,
       company: 'bt company',
       name: 'Licto',
       theme: 'colorful',
@@ -43,6 +43,9 @@ function Main({ authService }) {
       fileURL: null,
     },
   ])
+  function addCard(newCard) {
+    setCards([...cards, newCard])
+  }
 
   const navigate = useNavigate()
 
@@ -68,7 +71,7 @@ function Main({ authService }) {
         onLogout={onLogout}
       />
       <div className="content">
-        <Editor cards={cards} />
+        <Editor cards={cards} addCard={addCard} />
         <Preview cards={cards} />
       </div>
       <Footer />

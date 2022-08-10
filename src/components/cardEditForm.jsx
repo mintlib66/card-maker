@@ -5,10 +5,10 @@ import ImageFileInput from './imageFileInput'
 function CardEditForm({ card }) {
   const { name, company, theme, title, email, message, fileName, fileURL } =
     card
-  const DEFAULT_IMAGE = 'images/default_logo.png'
-  const url = fileURL || DEFAULT_IMAGE
 
-  const onSubmit = () => {}
+  const onSubmit = event => {
+    event.preventDefault()
+  }
 
   return (
     <form className="cardForm">
@@ -17,16 +17,16 @@ function CardEditForm({ card }) {
         type="text"
         name="name"
         placeholder="이름"
-        value={name}
+        defaultValue={name}
       />
       <input
         className="input"
         type="text"
         name="company"
         placeholder="회사"
-        value={company}
+        defaultValue={company}
       />
-      <select className="select" name="theme" value={theme}>
+      <select className="select" name="theme" defaultValue={theme}>
         <option value="dark">Dark</option>
         <option value="light">Light</option>
         <option value="colorful">Colorful</option>
@@ -36,19 +36,19 @@ function CardEditForm({ card }) {
         type="text"
         name="title"
         placeholder="직군"
-        value={title}
+        defaultValue={title}
       />
       <input
         className="input"
         type="email"
         placeholder="이메일"
-        value={email}
+        defaultValue={email}
       />
       <textarea
         className="textarea"
         name="message"
         placeholder="메시지"
-        value={message}
+        defaultValue={message}
       />
       <div className="fileInput">
         <ImageFileInput />
