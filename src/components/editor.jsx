@@ -13,7 +13,7 @@ function Editor({ cards, addCard, updateCard, deleteCard }) {
               key={key}
               card={cards[key]}
               updateCard={updateCard}
-              onDelete={deleteCard}
+              deleteCard={deleteCard}
             />
           )
         })}

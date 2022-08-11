@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Button from './button'
 import ImageFileInput from './imageFileInput'
 
-function CardEditForm({ card, updateCard, onDelete }) {
+function CardEditForm({ card, updateCard, deleteCard }) {
   const { id, name, company, theme, title, email, message, fileName, fileURL } =
     card
 
@@ -19,18 +19,15 @@ function CardEditForm({ card, updateCard, onDelete }) {
       return
     }
     event.preventDefault()
-    console.log(event.currentTarget.value)
     updateCard({
       ...card,
       [event.currentTarget.name]: event.currentTarget.value,
+      //동적으로 키 이름에 접근할 때는 대괄호를 써줘야함
     })
   }
   const onSubmit = event => {
     event.preventDefault()
-    console.log(event.target.parentNode)
-    console.log(event.target.parentNode.dataset.id)
-    const deleteId = event.target.parentNode.dataset.id
-    onDelete(deleteId)
+    deleteCard(card)
   }
 
   return (

@@ -17,8 +17,8 @@ function CardAddForm({ onAdd }) {
     //미리 보기란에 카드 추가
     const newCard = {
       id: Date.now(),
-      company: nameRef.current.value || '',
-      name: companyRef.current.value || '',
+      name: nameRef.current.value || '',
+      company: companyRef.current.value || '',
       theme: themeRef.current.value,
       title: titleRef.current.value || '',
       email: emailRef.current.value || '',

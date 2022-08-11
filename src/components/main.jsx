@@ -44,12 +44,7 @@ function Main({ authService }) {
       fileURL: null,
     },
   })
-  function addCard(newCard) {
-    setCards(cards => {
-      const updateCards = { ...cards, newCard }
-      return updateCards
-    })
-  }
+
   function updateCard(card) {
     setCards(cards => {
       const updateCards = { ...cards }
@@ -57,8 +52,12 @@ function Main({ authService }) {
       return updateCards
     })
   }
-  function deleteCard(cardId) {
-    console.log(cardId)
+  function deleteCard(card) {
+    setCards(cards => {
+      const updateCards = { ...cards }
+      delete updateCards[card.id]
+      return updateCards
+    })
   }
 
   const navigate = useNavigate()
@@ -87,7 +86,7 @@ function Main({ authService }) {
       <div className="content">
         <Editor
           cards={cards}
-          addCard={addCard}
+          addCard={updateCard}
           updateCard={updateCard}
           deleteCard={deleteCard}
         />
