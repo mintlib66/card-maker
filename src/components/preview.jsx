@@ -6,8 +6,8 @@ function Preview({ cards }) {
     <div className="preview">
       <h2>미리보기</h2>
       <ul className="cardList">
-        {cards.map(card => {
-          return <Card card={card} key={card.id} />
+        {Object.keys(cards).map(key => {
+          return <Card key={key} card={cards[key]} />
         })}
       </ul>
     </div>

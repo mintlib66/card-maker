@@ -8,9 +8,10 @@ import Preview from './preview'
 import '../style/main.css'
 
 function Main({ authService }) {
-  const [cards, setCards] = useState([
-    {
-      id: 1,
+  //배열이 아니라 object형태로 관리
+  const [cards, setCards] = useState({
+    '00': {
+      id: '00',
       company: 'bt company',
       name: 'Amy',
       theme: 'dark',
@@ -20,8 +21,8 @@ function Main({ authService }) {
       fileName: 'amy',
       fileURL: 'amy.png',
     },
-    {
-      id: 2,
+    '01': {
+      id: '01',
       company: 'bt company',
       name: 'Larkin',
       theme: 'light',
@@ -31,8 +32,8 @@ function Main({ authService }) {
       fileName: 'larkin',
       fileURL: null,
     },
-    {
-      id: 3,
+    '02': {
+      id: '02',
       company: 'bt company',
       name: 'Licto',
       theme: 'colorful',
@@ -42,15 +43,28 @@ function Main({ authService }) {
       fileName: 'licto',
       fileURL: null,
     },
-  ])
+  })
   function addCard(newCard) {
-    setCards([...cards, newCard])
+    setCards(cards => {
+      const updateCards = { ...cards, newCard }
+      return updateCards
+    })
+  }
+  function updateCard(card) {
+    setCards(cards => {
+      const updateCards = { ...cards }
+      updateCards[card.id] = card
+      return updateCards
+    })
+  }
+  function deleteCard(cardId) {
+    console.log(cardId)
   }
 
   const navigate = useNavigate()
 
   const onLogout = () => {
-    authService.logout() //
+    authService.logout()
   }
   useEffect(() => {
     authService.onAuthChange(user => {
@@ -71,7 +85,12 @@ function Main({ authService }) {
         onLogout={onLogout}
       />
       <div className="content">
-        <Editor cards={cards} addCard={addCard} />
+        <Editor
+          cards={cards}
+          addCard={addCard}
+          updateCard={updateCard}
+          deleteCard={deleteCard}
+        />
         <Preview cards={cards} />
       </div>
       <Footer />
