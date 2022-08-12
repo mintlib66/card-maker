@@ -17,18 +17,6 @@ function Card({ card }) {
       </div>
     </li>
   )
-
-  // function getTheme(theme) {
-  //   switch (theme) {
-  //     case 'dark':
-  //       return 'dark'
-  //     case 'light':
-  //       return 'light'
-  //     case 'light':
-  //       return 'light'
-  //       deafult: throw new Error(`Unknown Theme : ${theme}`)
-  //   }
-  // }
 }
 
 export default Card

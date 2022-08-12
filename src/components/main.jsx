@@ -7,7 +7,7 @@ import Editor from './editor'
 import Preview from './preview'
 import '../style/main.css'
 
-function Main({ authService }) {
+function Main({ authService, FileInput }) {
   //배열이 아니라 object형태로 관리
   const [cards, setCards] = useState({
     '00': {
@@ -89,6 +89,7 @@ function Main({ authService }) {
           addCard={updateCard}
           updateCard={updateCard}
           deleteCard={deleteCard}
+          FileInput={FileInput}
         />
         <Preview cards={cards} />
       </div>

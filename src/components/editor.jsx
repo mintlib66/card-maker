@@ -2,7 +2,7 @@ import React from 'react'
 import CardEditForm from './cardEditForm'
 import CardAddForm from './cardAddForm'
 
-function Editor({ cards, addCard, updateCard, deleteCard }) {
+function Editor({ cards, addCard, updateCard, deleteCard, FileInput }) {
   return (
     <div className="editor">
       <h2>카드 편집</h2>
@@ -14,10 +14,11 @@ function Editor({ cards, addCard, updateCard, deleteCard }) {
               card={cards[key]}
               updateCard={updateCard}
               deleteCard={deleteCard}
+              FileInput={FileInput}
             />
           )
         })}
-        <CardAddForm onAdd={addCard} />
+        <CardAddForm onAdd={addCard} FileInput={FileInput} />
       </ul>
     </div>
   )

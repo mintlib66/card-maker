@@ -1,18 +1,9 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Button from './button'
-import ImageFileInput from './imageFileInput'
 
-function CardEditForm({ card, updateCard, deleteCard }) {
+function CardEditForm({ card, updateCard, deleteCard, FileInput }) {
   const { id, name, company, theme, title, email, message, fileName, fileURL } =
     card
-
-  const formRef = useRef()
-  const nameRef = useRef()
-  const companyRef = useRef()
-  const themeRef = useRef()
-  const titleRef = useRef()
-  const emailRef = useRef()
-  const messageRef = useRef()
 
   const onChange = event => {
     if (event.currentTarget == null) {
@@ -25,20 +16,26 @@ function CardEditForm({ card, updateCard, deleteCard }) {
       //동적으로 키 이름에 접근할 때는 대괄호를 써줘야함
     })
   }
+  const onFileChange = file => {
+    updateCard({
+      ...card,
+      fileName: file.name,
+      fileURL: file.url,
+    })
+  }
   const onSubmit = event => {
     event.preventDefault()
     deleteCard(card)
   }
 
   return (
-    <form className="cardForm" data-id={id} ref={formRef}>
+    <form className="cardForm" data-id={id}>
       <input
         className="input"
         type="text"
         name="name"
         placeholder="이름"
         defaultValue={name}
-        ref={nameRef}
         onChange={onChange}
       />
       <input
@@ -47,14 +44,12 @@ function CardEditForm({ card, updateCard, deleteCard }) {
         name="company"
         placeholder="회사"
         defaultValue={company}
-        ref={companyRef}
         onChange={onChange}
       />
       <select
         className="select"
         name="theme"
         defaultValue={theme}
-        ref={themeRef}
         onChange={onChange}
       >
         <option value="dark">Dark</option>
@@ -67,15 +62,14 @@ function CardEditForm({ card, updateCard, deleteCard }) {
         name="title"
         placeholder="직군"
         defaultValue={title}
-        ref={titleRef}
         onChange={onChange}
       />
       <input
         className="input"
         type="email"
+        name="email"
         placeholder="이메일"
         defaultValue={email}
-        ref={emailRef}
         onChange={onChange}
       />
       <textarea
@@ -83,11 +77,10 @@ function CardEditForm({ card, updateCard, deleteCard }) {
         name="message"
         placeholder="메시지"
         defaultValue={message}
-        ref={messageRef}
         onChange={onChange}
       />
       <div className="fileInput">
-        <ImageFileInput />
+        <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
       <Button name="삭제" onClick={onSubmit} />
     </form>

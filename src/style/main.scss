@@ -57,6 +57,37 @@
           .button {
             flex: 1 1 50%;
           }
+
+          .fileInput {
+            display: flex;
+            padding: 0;
+
+            .container {
+              width: 100%;
+            }
+            .input-invisible {
+              display: none;
+            }
+            .upload_button {
+              flex-grow: 1;
+              width: 100%;
+              background-color: $makerLightGrey;
+              color: $makerBlack;
+            }
+            .upload_button.pink {
+              background-color: $makerLightPink;
+            }
+            .loading {
+              display: flex;
+              width: 100%;
+              height: 100%;
+              justify-content: center;
+              align-items: center;
+            }
+            .loadingSpinner {
+              width: 2em;
+            }
+          }
         }
       }
     }
