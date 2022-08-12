@@ -80,7 +80,7 @@ function CardAddForm({ onAdd, FileInput }) {
       <div className="fileInput">
         <FileInput name={file.fileName} onFileChange={onFileChange} />
       </div>
-      <Button name="추가" onClick={onSubmit} />
+      <Button name="추가" type="add" onClick={onSubmit} />
     </form>
   )
 }

@@ -82,7 +82,7 @@ function CardEditForm({ card, updateCard, deleteCard, FileInput }) {
       <div className="fileInput">
         <FileInput name={fileName} onFileChange={onFileChange} />
       </div>
-      <Button name="삭제" onClick={onSubmit} />
+      <Button name="삭제" type="delete" onClick={onSubmit} />
     </form>
   )
 }
