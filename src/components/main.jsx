@@ -2,13 +2,16 @@
 import React, { useEffect, useState } from 'react'
 import Header from './header'
 import Footer from './footer'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import Editor from './editor'
 import Preview from './preview'
 import '../style/main.css'
-import db from '../service/firebase'
 
-function Main({ authService, FileInput }) {
+function Main({ authService, FileInput, cardRepository }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const locationState = location.state
+
   //배열이 아니라 object형태로 관리
   const [cards, setCards] = useState({
     // '00': {
@@ -45,6 +48,7 @@ function Main({ authService, FileInput }) {
     //   fileURL: null,
     // },
   })
+  const [userId, setUserId] = useState(locationState && locationState.id)
 
   function updateCard(card) {
     setCards(cards => {
@@ -52,6 +56,7 @@ function Main({ authService, FileInput }) {
       updateCards[card.id] = card
       return updateCards
     })
+    cardRepository.saveCard(userId, card)
   }
   function deleteCard(card) {
     setCards(cards => {
@@ -59,9 +64,8 @@ function Main({ authService, FileInput }) {
       delete updateCards[card.id]
       return updateCards
     })
+    cardRepository.removeCard(userId, card)
   }
-
-  const navigate = useNavigate()
 
   const onLogout = () => {
     authService.logout()
@@ -70,33 +74,19 @@ function Main({ authService, FileInput }) {
     authService.onAuthChange(user => {
       if (!user) {
         navigate('/')
+      } else {
+        setUserId(user.uid)
       }
     })
   })
   useEffect(() => {
-    db.collection('test')
-      .get()
-      .then(querySnapshot => {
-        console.log(querySnapshot)
-        querySnapshot.forEach(doc => {
-          console.log(`${doc.id}: `)
-          console.log(doc.data())
-          console.log(doc.data().fileURL)
-
-          const newCard = {
-            id: doc.data().id,
-            name: doc.data().name || '',
-            company: doc.data().company || '',
-            theme: doc.data().theme,
-            title: doc.data().title || '',
-            email: doc.data().email || '',
-            message: doc.data().message || '',
-            fileName: doc.data().fileName || '',
-            fileURL: doc.data().fileURL || '',
-          }
-          updateCard(newCard)
-        })
-      })
+    if (!userId) {
+      return
+    } else {
+      return () => {
+        cardRepository.getCards(userId, cards => setCards(cards))
+      }
+    }
   }, [])
 
   return (

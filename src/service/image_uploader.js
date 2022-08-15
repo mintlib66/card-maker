@@ -1,11 +1,11 @@
 import cloudinary from 'cloudinary-react'
 
-const cloudName = 'dmic2urq8'
-const uploadPreset = 'own3mdxa'
+const cloudName = process.env.REACT_APP_CLOUD_NAME
+const uploadPreset = process.env.REACT_APP_CLOUD_UPLOAD_PRESET
 
 class ImageUploader {
   async upload(file) {
-    const url = 'https://api.cloudinary.com/v1_1/dmic2urq8/image/upload'
+    const url = process.env.REACT_APP_CLOUD_URL
     const formData = new FormData()
 
     formData.append('file', file)

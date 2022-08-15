@@ -11,8 +11,7 @@ function Login({ authService }) {
 
   //다음페이지에 사용자 정보 전달
   const gotoMaker = userId => {
-    navigate({
-      pathname: '/main',
+    navigate('/main', {
       state: { id: userId },
     })
   }
